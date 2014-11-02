@@ -13,6 +13,7 @@
 		BE8674DD1A063CB100F94C58 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE8674DC1A063CB100F94C58 /* Images.xcassets */; };
 		BE8674E01A063CB100F94C58 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE8674DE1A063CB100F94C58 /* LaunchScreen.xib */; };
 		BE8674EC1A063CB200F94C58 /* urlHandlerSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8674EB1A063CB200F94C58 /* urlHandlerSwiftTests.swift */; };
+		BE8674F61A063CCF00F94C58 /* UrlHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8674F51A063CCF00F94C58 /* UrlHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		BE8674E51A063CB200F94C58 /* urlHandlerSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = urlHandlerSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8674EA1A063CB200F94C58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE8674EB1A063CB200F94C58 /* urlHandlerSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = urlHandlerSwiftTests.swift; sourceTree = "<group>"; };
+		BE8674F51A063CCF00F94C58 /* UrlHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				BE8674D51A063CB100F94C58 /* AppDelegate.swift */,
 				BE8674D71A063CB100F94C58 /* ViewController.swift */,
+				BE8674F51A063CCF00F94C58 /* UrlHandler.swift */,
 				BE8674D91A063CB100F94C58 /* Main.storyboard */,
 				BE8674DC1A063CB100F94C58 /* Images.xcassets */,
 				BE8674DE1A063CB100F94C58 /* LaunchScreen.xib */,
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE8674F61A063CCF00F94C58 /* UrlHandler.swift in Sources */,
 				BE8674D81A063CB100F94C58 /* ViewController.swift in Sources */,
 				BE8674D61A063CB100F94C58 /* AppDelegate.swift in Sources */,
 			);
