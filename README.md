@@ -31,6 +31,23 @@ UrlHandler.sharedInstance.downloadFileWithURL("http://wfiles.brothersoft.com/a/a
 }
 ```
 
+
+Multiple File Downloader with progress .
+```swift
+var array:NSArray = ["http://wfiles.brothersoft.com/a/awesome-ice-block_178817-1920x1080.jpg",
+    "http://www.hitswallpapers.com/wp-content/uploads/2014/07/awesome-city-wallpapers-1920x1080-2.jpg",
+    "http://awesomewallpaper.files.wordpress.com/2011/09/splendorous1920x1080.jpg"
+]
+UrlHandler.sharedInstance.downloadListOfListWithArray(array, progress: { (pre, current) -> Void in
+    
+    println("progress : \(pre) : \(current)")
+    
+    }) { (error, returnObject, current) -> Void in
+        
+        println("Completed with : \(returnObject) : \(current)")
+}
+```
+
 ## Author
 
 Rahul Malik, rahul.send89@gmail.com

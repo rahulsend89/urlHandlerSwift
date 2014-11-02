@@ -14,6 +14,9 @@ var REQUESTTIMEOUT:NSTimeInterval = 10;
 var _completionHandler:((error:NSError?,returnObject:String)->Void)?
 var _progressHandler:((Float)->Void)?
 
+var _multiCompletionHandler:((error:NSError?,returnObject:String,current:Int)->Void)?
+var _multiProgressHandler:((pre:Float,current:Int)->Void)?
+var _currentVal:Int = 0
 
 extension NSOutputStream {
     func writeData(data: NSData) -> Int {
@@ -160,6 +163,31 @@ class UrlHandler:NSObject{
         }
     }
     
+    func downloadListOfListWithArray(fileList:NSArray,progress:(pre:Float,current:Int)->Void,handler:(error:NSError?,returnObject:String,current:Int)->Void)->Void{
+        if fileList.count==0 {
+            return;
+        }
+        _multiCompletionHandler = handler
+        _multiProgressHandler = progress
+        if isConnectedToNetwork() {
+            var myURL:String = fileList[0] as String;
+            var tempURL:NSURL = NSURL(string: myURL)!
+            var filename:NSString = tempURL.lastPathComponent
+            UrlHandler.sharedInstance.downloadFileWithURL(myURL, progress: { (pre) -> Void in
+                _multiProgressHandler!(pre: pre,current: _currentVal)
+                }, handler: { (error, returnObject) -> Void in
+                    _multiCompletionHandler!(error: error, returnObject: returnObject, current: _currentVal)
+                    _currentVal++;
+                    
+                    var array:NSMutableArray = NSMutableArray(array: fileList,copyItems:true)
+                    array.removeObjectAtIndex(0)
+                    self.downloadListOfListWithArray((array as NSArray), progress: _multiProgressHandler!, handler: _multiCompletionHandler!)
+            })
+        }else{
+            _multiCompletionHandler!(error:NSError(),returnObject:"notReachable",current: 0)
+        }
+    }
+
     func downloadCompleted(val:Bool)->Void{
         var fileManager:NSFileManager = NSFileManager.defaultManager()
         var errorVal:NSError?;
@@ -192,6 +220,7 @@ class UrlHandler:NSObject{
             }
         }
     }
+    
     
     func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse){
         if response .isKindOfClass(NSHTTPURLResponse .classForCoder()) {
