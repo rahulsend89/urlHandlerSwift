@@ -21,3 +21,12 @@ UrlHandler.sharedInstance.basicURL("http://google.com", handler: { (error, retur
     }
 })
 ```
+
+Download File with progress .
+```swift
+UrlHandler.sharedInstance.downloadFileWithURL("http://wfiles.brothersoft.com/a/awesome-ice-block_178817-1920x1080.jpg", progress: { (pre) -> Void in
+    println(pre)
+    }) { (error, returnObject) -> Void in
+        println(returnObject)
+}
+```
