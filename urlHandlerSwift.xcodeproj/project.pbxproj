@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE119B7F1A067E0500D0FAD8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE119B7E1A067E0500D0FAD8 /* SystemConfiguration.framework */; };
 		BE8674D61A063CB100F94C58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8674D51A063CB100F94C58 /* AppDelegate.swift */; };
 		BE8674D81A063CB100F94C58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8674D71A063CB100F94C58 /* ViewController.swift */; };
 		BE8674DB1A063CB100F94C58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE8674D91A063CB100F94C58 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE119B7E1A067E0500D0FAD8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BE8674D01A063CB100F94C58 /* urlHandlerSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = urlHandlerSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8674D41A063CB100F94C58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE8674D51A063CB100F94C58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE119B7F1A067E0500D0FAD8 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +104,7 @@
 		BE8674E81A063CB200F94C58 /* urlHandlerSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
+				BE119B7E1A067E0500D0FAD8 /* SystemConfiguration.framework */,
 				BE8674EB1A063CB200F94C58 /* urlHandlerSwiftTests.swift */,
 				BE8674E91A063CB200F94C58 /* Supporting Files */,
 			);
@@ -409,6 +413,7 @@
 				BE8674F11A063CB200F94C58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BE8674F21A063CB200F94C58 /* Build configuration list for PBXNativeTarget "urlHandlerSwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +422,7 @@
 				BE8674F41A063CB200F94C58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

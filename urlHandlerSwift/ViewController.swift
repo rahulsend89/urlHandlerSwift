@@ -12,7 +12,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UrlHandler.sharedInstance.basicURL("http://google.com", handler: { (error, returnObject) -> Void in
-            println(returnObject);
+            if (error != NSError() && returnObject != "notReachable") {
+                println(returnObject);
+            }else {
+                println(error)
+            }
         })
     }
 
