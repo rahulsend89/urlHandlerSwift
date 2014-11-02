@@ -1,4 +1,4 @@
-urlHandler
+urlHandlerSwift
 ==========
 
 Easy way to work with NSURL in Swift
@@ -37,4 +37,4 @@ Rahul Malik, rahul.send89@gmail.com
 
 ## License
 
-urlHandler is available under the MIT license. See the LICENSE file for more info.
+urlHandlerSwift is available under the MIT license. See the LICENSE file for more info.
