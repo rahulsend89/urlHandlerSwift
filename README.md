@@ -30,3 +30,11 @@ UrlHandler.sharedInstance.downloadFileWithURL("http://wfiles.brothersoft.com/a/a
         println(returnObject)
 }
 ```
+
+## Author
+
+Rahul Malik, rahul.send89@gmail.com
+
+## License
+
+urlHandler is available under the MIT license. See the LICENSE file for more info.
