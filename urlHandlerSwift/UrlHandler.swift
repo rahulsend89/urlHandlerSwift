@@ -60,6 +60,19 @@ class UrlHandler:NSObject{
         }
         return Static.instance!
     }
+    private func createError(code: Int=404) -> NSError {
+        var text = "An error occured"
+        if code == 404 {
+            text = "page not found"
+        } else if code == 401 {
+            text = "accessed denied"
+        }else if code == 402{
+            text = "not reachable"
+        }else{
+            text = ""
+        }
+        return NSError(domain: "HTTPTask", code: code, userInfo: [NSLocalizedDescriptionKey: text])
+    }
     func initCache(){
         var URLCache:NSURLCache = NSURLCache(memoryCapacity: 4 * 1024 * 1024, diskCapacity: 4 * 1024 * 1024, diskPath: nil)
         NSURLCache.setSharedURLCache(URLCache)
@@ -105,7 +118,7 @@ class UrlHandler:NSObject{
                 if cachedResponse != nil {
                     var returndata:NSData = cachedResponse!.data;
                     var returnString = String(NSString(data: returndata, encoding: NSUTF8StringEncoding)!)
-                    handler(error: NSError(),returnObject: returnString);
+                    handler(error: self.createError(),returnObject: returnString);
                 }else{
                     var reponse:AutoreleasingUnsafeMutablePointer<NSURLResponse?> = nil;
                     var error: NSError? = nil
@@ -124,7 +137,7 @@ class UrlHandler:NSObject{
                 }
             }
         }else{
-            handler(error:NSError(),returnObject:"notReachable")
+            handler(error:self.createError(code:402),returnObject:"notReachable")
         }
     }
     
@@ -188,6 +201,9 @@ class UrlHandler:NSObject{
         }
     }
 
+    func basicFormURL(myURL:NSString,urlMethod:NSString,dictionary:NSDictionary){
+        
+    }
     func downloadCompleted(val:Bool)->Void{
         var fileManager:NSFileManager = NSFileManager.defaultManager()
         var errorVal:NSError?;
