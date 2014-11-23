@@ -60,17 +60,8 @@ class UrlHandler:NSObject{
         }
         return Static.instance!
     }
-    private func createError(code: Int=404) -> NSError {
-        var text = "An error occured"
-        if code == 404 {
-            text = "page not found"
-        } else if code == 401 {
-            text = "accessed denied"
-        }else if code == 402{
-            text = "not reachable"
-        }else{
-            text = ""
-        }
+    private func makeError(text:String="")->NSError{
+        var code:Int = 404;
         return NSError(domain: "HTTPTask", code: code, userInfo: [NSLocalizedDescriptionKey: text])
     }
     func initCache(){
@@ -118,7 +109,7 @@ class UrlHandler:NSObject{
                 if cachedResponse != nil {
                     var returndata:NSData = cachedResponse!.data;
                     var returnString = String(NSString(data: returndata, encoding: NSUTF8StringEncoding)!)
-                    handler(error: self.createError(),returnObject: returnString);
+                    handler(error: nil,returnObject: returnString);
                 }else{
                     var reponse:AutoreleasingUnsafeMutablePointer<NSURLResponse?> = nil;
                     var error: NSError? = nil
@@ -137,7 +128,7 @@ class UrlHandler:NSObject{
                 }
             }
         }else{
-            handler(error:self.createError(code:402),returnObject:"notReachable")
+            handler(error:self.makeError(text: "notReachable"),returnObject:"")
         }
     }
     
@@ -157,7 +148,7 @@ class UrlHandler:NSObject{
                 var request:NSMutableURLRequest = NSMutableURLRequest(URL:mycurrentURL! ,cachePolicy: NSURLRequestCachePolicy.ReloadRevalidatingCacheData,
                     timeoutInterval: REQUESTTIMEOUT);
                 if self.downloadStream == nil {
-                    _completionHandler!(error:NSError(),returnObject:"Cannot create downloadStream")
+                    _completionHandler!(error:self.makeError(text: "Cannot create downloadStream"),returnObject:"")
                     self.downloadCompleted(false)
                     return;
                 }
@@ -166,13 +157,13 @@ class UrlHandler:NSObject{
                 self.connection?.scheduleInRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
                 self.connection?.start()
                 if self.connection == nil {
-                    _completionHandler!(error:NSError(),returnObject:"Cannot create connection")
+                    _completionHandler!(error:self.makeError(text: "Cannot create connection"),returnObject:"")
                     self.downloadCompleted(false)
                     return;
                 }
             }
         }else{
-            _completionHandler!(error:NSError(),returnObject:"notReachable")
+            _completionHandler!(error:self.makeError(text: "notReachable"),returnObject:"")
         }
     }
     
