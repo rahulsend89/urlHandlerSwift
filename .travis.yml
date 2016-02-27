@@ -1,4 +1,4 @@
-language: swift # or objective-c
+language: objective-c
 osx_image: xcode7.1
 script: ./test.sh
 after_success:
