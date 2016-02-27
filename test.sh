@@ -1,6 +1,6 @@
 #! /bin/bash
 
-TEST_CMD="xcodebuild -scheme urlHandlerSwift -workspace urlHandlerSwift.xcworkspace -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6S,OS=9.1' build test"
+TEST_CMD="xcodebuild -scheme urlHandlerSwift -project urlHandlerSwift.xcodeproj -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6S,OS=9.1' build test"
 
 which -s xcpretty
 XCPRETTY_INSTALLED=$?
