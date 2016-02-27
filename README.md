@@ -1,6 +1,7 @@
 urlHandlerSwift
 ==========
 [![Build Status](https://travis-ci.org/rahulsend89/urlHandlerSwift.svg?branch=master)](https://travis-ci.org/rahulsend89/urlHandlerSwift)
+[![codecov.io](https://codecov.io/github/rahulsend89/urlHandlerSwift/coverage.svg?branch=master)](https://codecov.io/github/rahulsend89/urlHandlerSwift?branch=master)
 
 Easy way to work with NSURL in Swift
 
