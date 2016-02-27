@@ -13,24 +13,22 @@ import XCTest
 
 class urlHandlerSwiftTests: XCTestCase {
     let baseURL = "https://httpbin.org/"
-    let timeOut = 3.0;
+    let timeOut = 3.0
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
     func testBasicRequest() {
         let expectation = expectationWithDescription("UrlHandler get request")
         var expectedResponce = false
         UrlHandler.sharedInstance.basicURL("\(baseURL)get", handler: { (error, returnObject) -> Void in
-            if (error == nil && returnObject != "") {
+            if error == nil && returnObject != "" {
                 expectedResponce = true
-            }else {
+            } else {
                 expectedResponce = false
             }
             expectation.fulfill()
@@ -38,14 +36,13 @@ class urlHandlerSwiftTests: XCTestCase {
         waitForExpectationsWithTimeout(timeOut, handler: nil)
         XCTAssert(expectedResponce, "UrlHandler get request")
     }
-    
-    func testBasicError(){
+    func testBasicError() {
         let expectation = expectationWithDescription("UrlHandler get request 404 error")
         var expectedResponce = false
         UrlHandler.sharedInstance.basicURL("\(baseURL)status/404", handler: { (error, returnObject) -> Void in
-            if (error == nil && returnObject != "") {
+            if error == nil && returnObject != "" {
                 expectedResponce = true
-            }else {
+            } else {
                 expectedResponce = false
             }
             expectation.fulfill()
@@ -53,8 +50,7 @@ class urlHandlerSwiftTests: XCTestCase {
         waitForExpectationsWithTimeout(timeOut, handler: nil)
         XCTAssertFalse(expectedResponce, "UrlHandler get request")
     }
-    
-    func testBasicDownload(){
+    func testBasicDownload() {
         let expectation = expectationWithDescription("UrlHandler testBasicDownload")
         var expectedResponce = false
         UrlHandler.sharedInstance.downloadFileWithURL("\(baseURL)drip?duration=0&numbytes=5&code=200", progress: { (pre) -> Void in
@@ -67,8 +63,7 @@ class urlHandlerSwiftTests: XCTestCase {
          waitForExpectationsWithTimeout(timeOut, handler: nil)
         XCTAssert(expectedResponce, "UrlHandler get request")
     }
-    
-    func testFalseDownload(){
+    func testFalseDownload() {
         let expectation = expectationWithDescription("UrlHandler testFalseDownload")
         var expectedResponce = false
         UrlHandler.sharedInstance.downloadFileWithURL("\(baseURL)drip?duration=0&numbytes=5&code=404", progress: { (pre) -> Void in
@@ -81,22 +76,19 @@ class urlHandlerSwiftTests: XCTestCase {
          waitForExpectationsWithTimeout(timeOut, handler: nil)
         XCTAssert(expectedResponce, "UrlHandler get request")
     }
-    
-    func testMultiDownload(){
+    func testMultiDownload() {
         let expectation = expectationWithDescription("UrlHandler get request")
         var expectedResponce = false
-        let array:NSArray = ["\(baseURL)drip?duration=0&numbytes=5&code=200",
+        let array: NSArray = ["\(baseURL)drip?duration=0&numbytes=5&code=200",
             "\(baseURL)image/png",
             "\(baseURL)image/jpeg",
         ]
         let length = array.count
         UrlHandler.sharedInstance.downloadListOfListWithArray(array, progress: { (pre, current) -> Void in
-            
             print("progress : \(pre) : \(current)")
-            
             }) { (error, returnObject, current) -> Void in
                 expectedResponce = true
-                if length-current == 1{
+                if length-current == 1 {
                     expectation.fulfill()
                 }
                 print("Completed with : \(returnObject) : \(current)")
