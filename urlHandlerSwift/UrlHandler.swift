@@ -191,9 +191,8 @@ class UrlHandler:NSObject{
         }
     }
 
-    func basicFormURL(myURL:NSString,urlMethod:NSString,dictionary:NSDictionary){
-        
-    }
+//    func basicFormURL(myURL:NSString,urlMethod:NSString,dictionary:NSDictionary){        
+//    }
     func downloadCompleted(val:Bool)->Void{
         let fileManager:NSFileManager = NSFileManager.defaultManager()
         if self.connection != nil {
@@ -256,8 +255,8 @@ class UrlHandler:NSObject{
         self.progressContentLength! += datawritten!
         _progressHandler!(Float(Float(self.progressContentLength!)/Float(self.expectedContentLength!)))
     }
-    func connection(connection: NSURLConnection, didSendBodyData bytesWritten: Int, totalBytesWritten: Int, totalBytesExpectedToWrite: Int){
-    }
+//    func connection(connection: NSURLConnection, didSendBodyData bytesWritten: Int, totalBytesWritten: Int, totalBytesExpectedToWrite: Int){
+//    }
     
     func connectionDidFinishLoading(connection: NSURLConnection){
         if (self.mainfilename != nil) {
